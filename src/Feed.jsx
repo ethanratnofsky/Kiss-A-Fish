@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "./supabase.config";
 import "./Feed.css";
 
@@ -32,7 +33,10 @@ const Feed = () => {
                 </div>
             ) : (
                 <div className="no-posts-container">
-                    <h2>No posts yet!</h2>
+                    <p>No posts yet - be the first to show off your fish kisses!</p>
+                    <Link to="/create">
+                        <button className="post-button">Create Post</button>
+                    </Link>
                 </div>
             )}
         </div>
