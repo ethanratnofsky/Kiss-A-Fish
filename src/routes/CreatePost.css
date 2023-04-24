@@ -1,0 +1,42 @@
+.create-post-container form {
+    margin-inline: 100px;
+}
+
+.create-post-container .heading {
+    text-align: center;
+}
+
+.create-post-container .input-container {
+    margin-bottom: 20px;
+}
+
+.create-post-container .input-container label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.create-post-container .input-container .input-description {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.create-post-container .input-container input,
+.create-post-container .input-container textarea {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.create-post-container textarea {
+    height: 100px;
+}
+
+.create-post-container form button {
+    width: 100%;
+}
