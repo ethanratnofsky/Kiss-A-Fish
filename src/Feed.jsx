@@ -5,6 +5,7 @@ import "./Feed.css";
 
 const Feed = () => {
     const [posts, setPosts] = useState([]);
+    const [sortedPosts, setSortedPosts] = useState([]);
 
     const fetchPosts = async () => {
         const { data, error } = await supabase.from("Posts").select();
@@ -19,6 +20,12 @@ const Feed = () => {
     useEffect(() => {
         fetchPosts();
     }, []);
+
+    // Sort posts by newest first
+    useEffect(() => {
+        const sortedPosts = [...posts].sort((a, b) => b.created_at - a.created_at);
+        setSortedPosts(sortedPosts);
+    }, [posts]);
 
     return (
         <div className="feed-container">

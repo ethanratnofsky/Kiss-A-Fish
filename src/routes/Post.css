@@ -9,3 +9,40 @@
     margin-right: 10px;
     font-size: 1.5em;
 }
+
+.post-container .no-post-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.post-container .actions-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-container .post-date {
+    font-size: 0.8em;
+    color: #828282;
+}
+
+.post-container .upvote-count {
+    display: inline;
+}
+
+.post-container .upvote-button {
+    margin-left: 15px;
+}
+
+.post-container .comments-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-container .comments-header .delimiter {
+    margin-inline: 5px;
+}
