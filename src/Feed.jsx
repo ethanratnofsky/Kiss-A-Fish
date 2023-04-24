@@ -23,14 +23,16 @@ const Feed = () => {
     return (
         <div className="feed-container">
             {posts.length > 0 ? (
-                <div className="posts-container">
+                <ul className="posts-list">
                     {posts.map((post) => (
-                        <div className="post-container" key={post.id}>
-                            <h2>{post.title}</h2>
-                            <p>{post.content}</p>
-                        </div>
+                        <Link to={"/" + post.id} key={post.id} className="post-list-item">
+                            <li>
+                                <h2>{post.title}</h2>
+                                <p>{post.content}</p>
+                            </li>
+                        </Link>
                     ))}
-                </div>
+                </ul>
             ) : (
                 <div className="no-posts-container">
                     <p>No posts yet - be the first to show off your fish kisses!</p>

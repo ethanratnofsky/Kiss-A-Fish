@@ -1,0 +1,11 @@
+.post-container .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-container .back-button {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
