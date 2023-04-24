@@ -29,13 +29,26 @@ const Feed = () => {
 
     return (
         <div className="feed-container">
-            {posts.length > 0 ? (
+            {sortedPosts.length > 0 ? (
                 <ul className="posts-list">
-                    {posts.map((post) => (
-                        <Link to={"/" + post.id} key={post.id} className="post-list-item">
-                            <li>
-                                <h2>{post.title}</h2>
-                                <p>{post.content}</p>
+                    {sortedPosts.map((post) => (
+                        <Link to={"/" + post.id} key={post.id} className="post-list-item-container">
+                            <li className="post-list-item">
+                                <div className="post-preview">
+                                    <h2 className="post-title">{post.title}</h2>
+                                    <p className="upvote-count">
+                                        <strong>{post.upvotes}</strong> upvotes
+                                    </p>
+                                </div>
+                                <p className="post-date">
+                                    {new Date(post.created_at).toLocaleString("en-US", {
+                                        month: "short",
+                                        day: "numeric",
+                                        year: "numeric",
+                                        hour: "numeric",
+                                        minute: "numeric",
+                                    })}
+                                </p>
                             </li>
                         </Link>
                     ))}
