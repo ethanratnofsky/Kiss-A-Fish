@@ -10,16 +10,16 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
--   [ ] **A create form that allows the user to create posts**
--   [ ] **Posts have a title and optionally additional textual content and/or an image added as an external image URL**
--   [ ] **A home feed displaying previously created posts**
+-   [x] **A create form that allows the user to create posts**
+-   [x] **Posts have a title and optionally additional textual content and/or an image added as an external image URL**
+-   [x] **A home feed displaying previously created posts**
 -   [ ] **By default, the time created, title, and number of upvotes for each post is shown on the feed**
--   [ ] **Clicking on a post shall direct the user to a new page for the selected post**
+-   [x] **Clicking on a post shall direct the user to a new page for the selected post**
 -   [ ] **Users can sort posts by either their created time or upvotes count**
 -   [ ] **Users can search for posts by title**
--   [ ] **A separate post page for each created post, where any additional information is shown is linked whenever a user clicks a post**
+-   [x] **A separate post page for each created post, where any additional information is shown is linked whenever a user clicks a post**
 -   [ ] **Users can leave comments underneath a post on the post's separate page**
--   [ ] **Each post should have an upvote button on the post's page. Each click increases its upvotes count by one and users can upvote any number of times**
+-   [x] **Each post should have an upvote button on the post's page. Each click increases its upvotes count by one and users can upvote any number of times**
 -   [ ] **A previously created post can be edited or deleted from its post page**
 
 The following **optional** features are implemented:
