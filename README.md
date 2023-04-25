@@ -20,7 +20,7 @@ The following **required** functionality is completed:
 -   [x] **A separate post page for each created post, where any additional information is shown is linked whenever a user clicks a post**
 -   [ ] **Users can leave comments underneath a post on the post's separate page**
 -   [x] **Each post should have an upvote button on the post's page. Each click increases its upvotes count by one and users can upvote any number of times**
--   [ ] **A previously created post can be edited or deleted from its post page**
+-   [x] **A previously created post can be edited or deleted from its post page**
 
 The following **optional** features are implemented:
 

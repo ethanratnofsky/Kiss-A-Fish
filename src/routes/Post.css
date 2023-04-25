@@ -41,6 +41,27 @@
     height: 100px;
 }
 
+.post-container .post-image {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.post-container label.image-url {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.post-container input.image-url {
+    flex: 1;
+    margin-left: 5px;
+}
+
+.post-container .post-content {
+    text-align: center;
+}
+
 .post-container .footer {
     display: flex;
     align-items: center;

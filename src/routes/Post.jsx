@@ -153,7 +153,22 @@ const Post = () => {
                         </span>
                     </div>
                     {post.image_url && (
-                        <img className="post-image" src={post.image_url} alt={post.title} />
+                        <img
+                            className="post-image"
+                            src={isEditing ? newImageUrl : post.image_url}
+                            alt={post.title}
+                        />
+                    )}
+                    {isEditing && (
+                        <label className="image-url">
+                            <strong>Image URL:</strong>
+                            <input
+                                type="text"
+                                value={newImageUrl}
+                                onChange={handleNewImageUrlChange}
+                                className="image-url"
+                            />
+                        </label>
                     )}
                     <p className="post-content">
                         {isEditing ? (
