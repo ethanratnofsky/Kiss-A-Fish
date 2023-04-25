@@ -1,3 +1,19 @@
+.feed-container .filters-container {
+    display: flex;
+}
+
+.feed-container .search-bar {
+    flex: 1;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.feed-container .filters-container button {
+    margin-left: 10px;
+}
+
 .feed-container .posts-list {
     padding: 0;
 }
