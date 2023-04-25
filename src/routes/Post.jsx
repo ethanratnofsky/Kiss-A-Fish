@@ -246,26 +246,28 @@ const Post = () => {
                             onChange={handleNewCommentChange}
                             placeholder="Add a comment..."
                         />
-                        <button onClick={handleComment} className="comment-button">
-                            Comment
-                        </button>
+                        <div className="comment-button-container">
+                            <button onClick={handleComment} className="comment-button">
+                                💬 Comment
+                            </button>
+                        </div>
                     </div>
                     <div className="comments-container">
                         {comments.length > 0 ? (
                             <ul className="comments-list">
                                 {comments.map((comment) => (
                                     <li key={comment.id} className="comment">
-                                        <p className="comment-content">{comment.content}</p>
                                         <p className="comment-date">
                                             {new Date(comment.created_at).toLocaleString("en-US", {
-                                                weekday: "long",
+                                                weekday: "short",
                                                 year: "numeric",
-                                                month: "long",
+                                                month: "short",
                                                 day: "numeric",
                                                 hour: "numeric",
                                                 minute: "numeric",
                                             })}
                                         </p>
+                                        <p className="comment-content">{comment.content}</p>
                                     </li>
                                 ))}
                             </ul>

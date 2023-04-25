@@ -69,7 +69,8 @@
     margin-bottom: 10px;
 }
 
-.post-container .post-date {
+.post-container .post-date,
+.post-container .comment-date {
     font-size: 0.8em;
     color: #828282;
 }
@@ -91,6 +92,33 @@
     margin-inline: 5px;
 }
 
+.post-container .new-comment-container textarea.new-comment {
+    display: block;
+}
+
+.post-container .comment-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
 .post-container .new-comment-container .comment-button {
+    float: right;
+}
+
+.post-container ul.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-container .comment {
+    background-color: #181818;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.post-container .comment-date {
+    margin: 0;
     float: right;
 }
