@@ -14,6 +14,7 @@ const Post = () => {
     const [newTitle, setNewTitle] = useState("");
     const [newContent, setNewContent] = useState("");
     const [newImageUrl, setNewImageUrl] = useState("");
+    const [newComment, setNewComment] = useState("");
 
     const fetchPost = async () => {
         const { data, error } = await supabase
@@ -28,9 +29,22 @@ const Post = () => {
         }
     };
 
+    const fetchComments = async () => {
+        const { data, error } = await supabase
+            .from("Comments")
+            .select()
+            .filter("post_id", "eq", id);
+        if (error) {
+            alert("[Post] Error fetching comments: " + error.message);
+        } else {
+            setComments(data);
+        }
+    };
+
     // Fetch post on initial load
     useEffect(() => {
         fetchPost();
+        fetchComments();
     }, []);
 
     useEffect(() => {
@@ -56,6 +70,10 @@ const Post = () => {
 
     const handleNewImageUrlChange = (e) => {
         setNewImageUrl(e.target.value);
+    };
+
+    const handleNewCommentChange = (e) => {
+        setNewComment(e.target.value);
     };
 
     const toggleEditMode = () => {
@@ -104,6 +122,20 @@ const Post = () => {
         if (error) {
             setUpvotes((prev) => prev - 1);
             alert("[Post] Error upvoting post: " + error.message);
+        }
+    };
+
+    const handleComment = async () => {
+        const { data, error } = await supabase
+            .from("Comments")
+            .insert({ post_id: id, content: newComment })
+            .select();
+
+        if (error) {
+            alert("[Post] Error commenting on post: " + error.message);
+        } else {
+            setComments((prev) => [...prev, data[0]]);
+            setNewComment("");
         }
     };
 
@@ -206,6 +238,17 @@ const Post = () => {
                         <h3 className="comments-title">Comments </h3>
                         <strong className="delimiter">•</strong>
                         <p className="comments-count">{comments.length}</p>
+                    </div>
+                    <div className="new-comment-container">
+                        <textarea
+                            className="new-comment"
+                            value={newComment}
+                            onChange={handleNewCommentChange}
+                            placeholder="Add a comment..."
+                        />
+                        <button onClick={handleComment} className="comment-button">
+                            Comment
+                        </button>
                     </div>
                     <div className="comments-container">
                         {comments.length > 0 ? (

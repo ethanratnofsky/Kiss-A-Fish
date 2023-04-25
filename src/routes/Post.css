@@ -90,3 +90,7 @@
 .post-container .comments-header .delimiter {
     margin-inline: 5px;
 }
+
+.post-container .new-comment-container .comment-button {
+    float: right;
+}
