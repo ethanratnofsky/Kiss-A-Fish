@@ -4,7 +4,7 @@ Submitted by: Ethan Ratnofsky
 
 This web app is a social media platform where users can post their catches and share their fishing experiences with others. Users can create posts with a title, description, and image. They can also upvote posts and leave comments. Users can also search for posts by title and sort posts by upvotes or time created.
 
-Time spent: **X** hours spent in total
+Time spent: 7 hours spent in total
 
 ## Required Features
 
