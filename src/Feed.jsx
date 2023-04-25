@@ -23,7 +23,9 @@ const Feed = () => {
 
     // Sort posts by newest first
     useEffect(() => {
-        const sortedPosts = [...posts].sort((a, b) => b.created_at - a.created_at);
+        const sortedPosts = posts.sort((a, b) => {
+            return new Date(b.created_at) - new Date(a.created_at);
+        });
         setSortedPosts(sortedPosts);
     }, [posts]);
 
