@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../supabase.config";
 import "./Post.css";
 
 const Post = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [post, setPost] = useState();
     const [upvotes, setUpvotes] = useState(0);
     const [comments, setComments] = useState([]);
+    const [isEditing, setIsEditing] = useState(false);
+    const [newTitle, setNewTitle] = useState("");
+    const [newContent, setNewContent] = useState("");
+    const [newImageUrl, setNewImageUrl] = useState("");
 
     const fetchPost = async () => {
         const { data, error } = await supabase
@@ -31,6 +36,62 @@ const Post = () => {
     useEffect(() => {
         if (post) setUpvotes(post.upvotes);
     }, [post]);
+
+    // Reset edit form when toggling edit mode
+    useEffect(() => {
+        if (!isEditing && post) {
+            setNewTitle(post.title);
+            setNewContent(post.content);
+            setNewImageUrl(post.image_url);
+        }
+    }, [isEditing, post]);
+
+    const handleNewTitleChange = (e) => {
+        setNewTitle(e.target.value);
+    };
+
+    const handleNewContentChange = (e) => {
+        setNewContent(e.target.value);
+    };
+
+    const handleNewImageUrlChange = (e) => {
+        setNewImageUrl(e.target.value);
+    };
+
+    const toggleEditMode = () => {
+        setIsEditing((prev) => !prev);
+    };
+
+    const handleEdit = async () => {
+        const { error } = await supabase
+            .from("Posts")
+            .update({ title: newTitle, content: newContent, image_url: newImageUrl })
+            .eq("id", id);
+
+        if (error) {
+            alert("[Post] Error editing post: " + error.message);
+        } else {
+            toggleEditMode();
+            setPost((prev) => ({
+                ...prev,
+                title: newTitle,
+                content: newContent,
+                image_url: newImageUrl,
+            }));
+        }
+    };
+
+    const handleDelete = async () => {
+        const confirmation = window.confirm("Are you sure you want to delete this post?");
+        if (confirmation) {
+            const { error } = await supabase.from("Posts").delete().eq("id", id);
+            if (error) {
+                alert("[Post] Error deleting post: " + error.message);
+            } else {
+                navigate("/");
+            }
+        }
+    };
 
     const handleUpvote = async () => {
         setUpvotes((prev) => prev + 1);
@@ -56,12 +117,56 @@ const Post = () => {
             </div>
             {post ? (
                 <div className="post">
-                    <h1 className="post-title">{post.title}</h1>
+                    <div className="post-header">
+                        <h1 className="post-title">
+                            {isEditing ? (
+                                <input
+                                    type="text"
+                                    value={newTitle}
+                                    onChange={handleNewTitleChange}
+                                    placeholder="Title"
+                                />
+                            ) : (
+                                post.title
+                            )}
+                        </h1>
+                        <span>
+                            {isEditing ? (
+                                <>
+                                    <button onClick={handleEdit} className="save-button">
+                                        Save
+                                    </button>
+                                    <button onClick={toggleEditMode} className="cancel-button">
+                                        Cancel
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button onClick={toggleEditMode} className="edit-button">
+                                        Edit
+                                    </button>
+                                    <button onClick={handleDelete} className="delete-button">
+                                        Delete
+                                    </button>
+                                </>
+                            )}
+                        </span>
+                    </div>
                     {post.image_url && (
                         <img className="post-image" src={post.image_url} alt={post.title} />
                     )}
-                    <p className="post-content">{post.content}</p>
-                    <div className="actions-container">
+                    <p className="post-content">
+                        {isEditing ? (
+                            <textarea
+                                value={newContent}
+                                onChange={handleNewContentChange}
+                                placeholder="Add a description to your post!"
+                            />
+                        ) : (
+                            post.content
+                        )}
+                    </p>
+                    <div className="footer">
                         <p className="post-date">
                             {new Date(post.created_at).toLocaleString("en-US", {
                                 weekday: "long",

@@ -18,7 +18,30 @@
     height: 100%;
 }
 
-.post-container .actions-container {
+.post-container .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-container button.save-button,
+.post-container button.cancel-button,
+.post-container button.edit-button,
+.post-container button.delete-button {
+    margin-left: 10px;
+}
+
+.post-container input[type="text"],
+.post-container textarea {
+    font: inherit;
+}
+
+.post-container textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.post-container .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
