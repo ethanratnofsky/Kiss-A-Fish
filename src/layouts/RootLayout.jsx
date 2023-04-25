@@ -12,7 +12,7 @@ const RootLayout = () => {
                 <ul>
                     <li>
                         <Link to="/create">
-                            <button className="post-button">+ Post</button>
+                            <button className="post-button">✎ Post</button>
                         </Link>
                     </li>
                 </ul>
