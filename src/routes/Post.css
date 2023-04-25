@@ -122,3 +122,7 @@
     margin: 0;
     float: right;
 }
+
+.post-container .no-comments {
+    text-align: center;
+}

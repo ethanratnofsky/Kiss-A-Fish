@@ -34,6 +34,10 @@ const Post = () => {
             .from("Comments")
             .select()
             .filter("post_id", "eq", id);
+
+        // Sort comments by date created (descending)
+        data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
         if (error) {
             alert("[Post] Error fetching comments: " + error.message);
         } else {
@@ -134,7 +138,7 @@ const Post = () => {
         if (error) {
             alert("[Post] Error commenting on post: " + error.message);
         } else {
-            setComments((prev) => [...prev, data[0]]);
+            setComments((prev) => [data[0], ...prev]);
             setNewComment("");
         }
     };
